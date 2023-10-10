@@ -9,7 +9,7 @@ public class PlatformMechanic : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.S))
+        if (Input.GetKeyUp(KeyCode.DownArrow))
         {
             if (currentOneWayPlatform != null)
             {
