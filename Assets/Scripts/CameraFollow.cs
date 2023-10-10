@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    private Vector3 offset = new Vector3 (0, 0, -10f);
+    private Vector3 offset = new Vector3 (0.6f, 0.45f, -10f);
     private float smoothTime = 0f;
     private Vector3 velocity = Vector3.zero;
 
@@ -16,7 +16,7 @@ public class CameraFollow : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Vector3 targetPosition = target.position + offset;
         transform.position = Vector3.SmoothDamp(transform.position.normalized, targetPosition, ref velocity, smoothTime);

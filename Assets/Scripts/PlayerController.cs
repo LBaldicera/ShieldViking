@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Animator animator;
+
+    public CharacterStats characterStats;
 
     // Start is called before the first frame update
     void Start()
@@ -23,17 +26,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        animator.SetFloat("Speed", Mathf.Abs(horizontal));
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetKeyDown(KeyCode.W) && IsGrounded())
+        if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            animator.SetBool("IsJumping", true);
         }
-
-        //if (Input.GetKeyDown(KeyCode.W) && rb.velocity.x > 0f)
-        // {
-        //     rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-        // }
 
         Flip();
     }
@@ -45,7 +46,7 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
     }
 
     private void Flip()
