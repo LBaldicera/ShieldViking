@@ -10,7 +10,7 @@ public class Enemies : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        characterStats.currentHealth = characterStats.maximumHealth;
+        characterStats.currentHealth = characterStats.startingHealth;
     }
 
     // Update is called once per frame
@@ -19,7 +19,7 @@ public class Enemies : MonoBehaviour
         
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float _damage)
     {
         characterStats.currentHealth -= characterStats.attackDamage;
         if (characterStats.currentHealth < 0)
