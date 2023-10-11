@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
-    [SerializeField] private Transform attackPoint;
+/*    [SerializeField] private Transform attackPoint;
     [SerializeField] float attackRange = 0.5f;
     [SerializeField] LayerMask enemyLayers;
+
 
     public Animator animator;
     public CharacterStats characterStats;
@@ -43,4 +44,4 @@ public class PlayerCombat : MonoBehaviour
             return;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
-}
+*/}

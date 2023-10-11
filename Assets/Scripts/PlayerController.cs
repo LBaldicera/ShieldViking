@@ -2,24 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : BaseUnit
 {
     [SerializeField] private float moveSpeed = 5.0f;
+    private float defaultMoveSpeed;
     [SerializeField] private float jumpForce = 5.0f;
     private float horizontal;
     private bool isGrounded;
     private bool isFacingRight;
+
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] float attackRange = 0.5f;
+    [SerializeField] LayerMask enemyLayers;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Animator animator;
 
-    public CharacterStats characterStats;
-
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        characterStats.nextAttackTime = 0;
+        defaultMoveSpeed = moveSpeed;
+        characterStats.currentHealth = characterStats.startingHealth;
 
     }
 
@@ -30,13 +36,34 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded())
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             animator.SetBool("IsJumping", true);
         }
 
+        if (Input.GetKey(KeyCode.UpArrow) && IsGrounded())
+        {
+            animator.SetBool("IsBlocking", true);
+        }
+        else
+        {
+            animator.SetBool("IsBlocking", false);
+        }
+
         Flip();
+
+        if (Time.time >= characterStats.nextAttackTime)
+        {
+            moveSpeed = defaultMoveSpeed;
+            if (Input.GetKeyDown(KeyCode.X) && IsGrounded())
+            {
+                animator.SetTrigger("Attack");
+                Debug.Log("Im attacking");
+                moveSpeed = 0;
+                characterStats.nextAttackTime = Time.time + 1f / characterStats.attackRate;
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -60,5 +87,12 @@ public class PlayerController : MonoBehaviour
         }
 
 
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+            return;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }

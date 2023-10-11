@@ -8,16 +8,19 @@ public class HealthBar : MonoBehaviour
     [SerializeField] private HealthSystem playerHealth;
     [SerializeField] private Image totalHealthbar;
     [SerializeField] private Image currentHealthbar;
+    [SerializeField] private float maxHealthBar;
+    public CharacterStats characterStats;
+
 
     private void Start()
-    {
-        totalHealthbar.fillAmount = playerHealth.currentHealth / 10;
+    { 
+
     }
 
     private void Update()
     {
-        currentHealthbar.fillAmount = playerHealth.currentHealth / 10;
-        //Debug.Log(playerHealth);
+        currentHealthbar.fillAmount = maxHealthBar * (characterStats.currentHealth / characterStats.startingHealth);
+        Debug.Log(characterStats.currentHealth);
 
     }
 }

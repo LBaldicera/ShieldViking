@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemies : MonoBehaviour
+public class BaseUnit : MonoBehaviour
 {
     public CharacterStats characterStats;
    
@@ -19,10 +19,10 @@ public class Enemies : MonoBehaviour
         
     }
 
-    public void TakeDamage(float _damage)
+    public void TakeDamage(float damage)
     {
-        characterStats.currentHealth -= characterStats.attackDamage;
-        if (characterStats.currentHealth < 0)
+        characterStats.currentHealth -= damage;
+        if (characterStats.currentHealth <= 0)
         {
             Die();
         }
