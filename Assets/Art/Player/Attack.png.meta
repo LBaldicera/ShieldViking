@@ -113,18 +113,6 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -143,8 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0574cb5390f3481478f4179577f1b740
-      internalID: -1018737619
+      spriteID: c8d827b98ba5ef240b0f8dacb7b43812
+      internalID: -976493329
       vertices: []
       indices: 
       edges: []
@@ -164,8 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c3163f6839e887f46b8d8889414b5fe6
-      internalID: -308349067
+      spriteID: ae94e05b1f37f514f8a2ab2c10180886
+      internalID: 28776089
       vertices: []
       indices: 
       edges: []
@@ -185,8 +173,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d70a53ba8e8648418b968f0128ab50a
-      internalID: -973429088
+      spriteID: da31fc154674c974ea6bfbc9654b7af6
+      internalID: -419703059
       vertices: []
       indices: 
       edges: []
@@ -206,8 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e532b1c92c12214e97e42801350fb08
-      internalID: -316688282
+      spriteID: ec13d020110f6be4ca40cc6dc597768b
+      internalID: -811798537
       vertices: []
       indices: 
       edges: []
@@ -223,10 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Attack_0: -1018737619
-      Attack_1: -308349067
-      Attack_2: -973429088
-      Attack_3: -316688282
+      Attack_0: -976493329
+      Attack_1: 28776089
+      Attack_2: -419703059
+      Attack_3: -811798537
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
