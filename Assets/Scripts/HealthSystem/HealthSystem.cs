@@ -5,36 +5,15 @@ using UnityEngine;
 public class HealthSystem : MonoBehaviour
 {
     public CharacterStats characterStats;
+    public BaseUnit baseUnit;
 
-    /*    [SerializeField] public float startingHealth;
-        public float currentHealth {get; private set;}
-        // Start is called before the first frame update
-        private void Awake()
-        {
-            currentHealth = startingHealth;
-        }
-
-        private void TakeDamage(float _damage)
-        {
-            currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
-
-            if (currentHealth > 0)
-            {
-                //hurt
-            }
-            else
-            {
-                //dead
-            }
-        }
-    */
     private void Update()
     {
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             characterStats.currentHealth -= 10f;
+            Debug.Log(characterStats.currentHealth);
         }
-        //Debug.Log("Player's current health: " + currentHealth);
     }
 
     public void AddHealth(float _value)

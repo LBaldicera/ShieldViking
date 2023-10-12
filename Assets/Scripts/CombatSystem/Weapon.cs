@@ -21,5 +21,12 @@ public class Weapon : MonoBehaviour
 
             other.GetComponent<BaseUnit>().TakeDamage(characterStats.attackDamage);
         }
+
+        if ((other.gameObject.layer == LayerMask.NameToLayer("Shield")))
+        {
+            Debug.Log("Hit Shield");
+
+            other.GetComponent<BaseUnit>().TakeDamage(characterStats.attackDamage / 2f);
+        }
     }
 }
