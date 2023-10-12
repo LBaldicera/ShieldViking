@@ -136,7 +136,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 20
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 2
@@ -188,7 +188,7 @@ MonoBehaviour:
   isAlive: 1
   moveSpeed: 1
   jumpForce: 4.5
-  attackPoint: {fileID: 4573107411171038444, guid: 00000000000000000000000000000000, type: 0}
+  attackPoint: {fileID: 0}
   attackRange: 0.1
   enemyLayers:
     serializedVersion: 2

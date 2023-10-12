@@ -52,6 +52,13 @@ public class AIController : BaseUnit
             SetState(State.Idle);
         }
 
+        Flip();
+
+    }
+
+    private void Update()
+    {
+        
     }
 
     private void SetState(State newState)
@@ -120,7 +127,9 @@ public class AIController : BaseUnit
             {
                 lastPoint = currentPoint;
                 currentPoint = null;
-            }    
+                Flip();
+            }
+           
             yield return null;
         }
 
@@ -226,4 +235,16 @@ public class AIController : BaseUnit
     {
         return (eyes.position);
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(pointA.transform.position, 0.1f);
+        Gizmos.DrawWireSphere(pointB.transform.position, 0.1f);
+        Gizmos.DrawLine(pointA.transform.position, pointB.transform.position);
+
+        // Draw a box to represent the field of vision
+        Gizmos.color = Color.red; // You can choose any color you like
+        Gizmos.DrawWireCube(GetEyesPosition(), new Vector3(lookDistance * 2, lookDistance * 2, 0));
+    }
+
 }
