@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06cc983bf9e63624a998d29e7ed564b9, type: 3}
   m_Name: Enemy
   m_EditorClassIdentifier: 
-  startingHealth: 30
-  currentHealth: 30
+  startingHealth: 20
+  currentHealth: 20
   attackDamage: 10
-  attackRate: 1
+  attackRate: 2
   nextAttackTime: 0

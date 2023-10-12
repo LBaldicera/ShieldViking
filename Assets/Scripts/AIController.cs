@@ -40,6 +40,9 @@ public class AIController : BaseUnit
     [SerializeField]
     private float viewAngle;
 
+    private float vx;
+
+    private bool facingLeft;
 
     public override void Start()
     {
@@ -52,13 +55,33 @@ public class AIController : BaseUnit
             SetState(State.Idle);
         }
 
-        Flip();
+        //Flip();
 
     }
 
-    private void Update()
+    private void Flip()
     {
-        
+        // get the current scale
+        Vector2 localScale = transform.localScale;
+        vx = rb.velocity.x;
+        if (vx < 0) // moving right so face right
+        {
+            facingLeft = true;
+        }
+        else if (vx > 0)
+        { // moving left so face left
+            facingLeft = false;
+        }
+
+        // check to see if scale x is right for the player
+        // if not, multiple by -1 which is an easy way to flip a sprite
+        if (((facingLeft) && (localScale.x < 0)) || ((!facingLeft) && (localScale.x > 0)))
+        {
+            localScale.x *= -1;
+        }
+
+        // update the scale
+        transform.localScale = localScale;
     }
 
     private void SetState(State newState)
@@ -116,18 +139,18 @@ public class AIController : BaseUnit
     {
         animator.SetBool("Walking", true);
 
-        while (currentPoint != null)
+        while (currentPoint != null && isAlive)
         {
             Vector3 direction = (currentPoint.position - transform.position).normalized;
-            rb.velocity = new Vector2(direction.x, direction.y) * moveSpeed;
+            rb.velocity = new Vector2(direction.x, 0f) * moveSpeed;
 
             LookForEnemies();
+            Flip();
 
             if (Vector3.Distance(transform.position, currentPoint.position) <= 0.01f)
             {
                 lastPoint = currentPoint;
                 currentPoint = null;
-                Flip();
             }
            
             yield return null;
@@ -143,9 +166,8 @@ public class AIController : BaseUnit
         ////we have to reset the path of our agent
         float attackTimer = characterStats.attackRate;
 
-        while (currentEnemy != null && currentEnemy.isAlive)
+        while (currentEnemy != null && currentEnemy.isAlive && isAlive)
         {
-            Debug.Log("Go after player");
             attackTimer += Time.deltaTime; //increment our shoot timer each time
             float distanceToEnemy = Vector2.Distance(currentEnemy.transform.position, this.transform.position);
             //if we are too far away or we can't see our enemy, let's move towards them
@@ -154,24 +176,26 @@ public class AIController : BaseUnit
             Vector2 dir = currentEnemy.transform.position - this.transform.position;
             dir.Normalize();
 
-            //transform.LookAt(enemyPos);
+            Transform enemyPos = currentEnemy.transform;
+            //transform.LookAt(enemyPos.position);
 
 
             if (distanceToEnemy > attackDis )
             {
                 animator.SetBool("Walking", true);
-                rb.velocity = new Vector2(dir.x, dir.y) * moveSpeed;
+                rb.velocity = new Vector2(dir.x, 0f) * moveSpeed;
+                Flip();
 
             }
             else if (attackTimer > characterStats.attackRate)
             {
                 attackTimer = 0;
 
-                    //if this is true, we attack the player
-                    animator.SetBool("Walking", false);
-                    animator.SetTrigger("Attack");
+                //if this is true, we attack the player
+                animator.SetBool("Walking", false);
+                animator.SetTrigger("Attack");
 
-                    yield return new WaitForSecondsRealtime(characterStats.attackRate); //Wait for the animation to complete before actaully reducing life
+                yield return new WaitForSecondsRealtime(characterStats.attackRate); //Wait for the animation to complete before actaully reducing life
 
             }
             yield return null;
@@ -179,13 +203,6 @@ public class AIController : BaseUnit
         currentEnemy = null;
         currentPoint = pointA;
         SetState(State.Idle);
-    }
-
-    private void Flip()
-    {
-        Vector2 localScale = transform.localScale;
-        localScale.x *= -1f;
-        transform.localScale = localScale;
     }
 
     private void LookForEnemies()
@@ -196,12 +213,11 @@ public class AIController : BaseUnit
                 //how do we know if the element we are colliding with is an enemy?
                 //Not on our team.
                 BaseUnit unit = coll.GetComponent<BaseUnit>();
-                if (unit != null)
+                if (unit != null && isAlive)
                 {
                     //we also want to check a couplemore things:
                     if (unit.tag == "Player" && CanSee(unit.transform, unit.transform.position) && unit.isAlive)
                     {
-                        Debug.Log("Sees Player");
                         currentEnemy = unit;
                         SetState(State.Chasing);
                         return; //remember: you can return anywhere in a void function and it immediately exits
@@ -212,22 +228,12 @@ public class AIController : BaseUnit
 
     private bool CanSee(Transform target, Vector2 targetPosition)
     {
-        Vector2 startPos = GetEyesPosition();//where we do get the starting position of our vision?
+        Vector2 startPos = GetEyesPosition(); //where we do get the starting position of our vision?
         Vector2 dir = targetPosition - startPos;
         //We now need to change if our angle is greater than the viewing angle, and, if so, return false
-        //if (Vector3.Angle(transform.forward, dir) > viewAngle)
-            //return false;
+        if (Vector2.Angle(transform.forward, dir) > viewAngle)
+            return false;
 
-        Ray ray = new Ray(startPos, dir);
-        LayerMask mask = ~LayerMask.GetMask("AISpot");//make sure that we don't care about our AISpot when looking for enemies
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
-        {
-            if (hit.transform != target)
-            {
-                return false;
-            }
-        }
         return true;
     }
 
@@ -246,5 +252,12 @@ public class AIController : BaseUnit
         Gizmos.color = Color.red; // You can choose any color you like
         Gizmos.DrawWireCube(GetEyesPosition(), new Vector3(lookDistance * 2, lookDistance * 2, 0));
     }
+
+    public override void Die()
+    {
+        base.Die();
+        StopAllCoroutines();
+    }
+
 
 }

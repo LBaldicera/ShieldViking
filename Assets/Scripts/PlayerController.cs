@@ -60,7 +60,6 @@ public class PlayerController : BaseUnit
             if (Input.GetKeyDown(KeyCode.X) && IsGrounded())
             {
                 animator.SetTrigger("Attack");
-                Debug.Log("Im attacking");
                 moveSpeed = 0;
                 characterStats.nextAttackTime = Time.time + 1f / characterStats.attackRate;
             }

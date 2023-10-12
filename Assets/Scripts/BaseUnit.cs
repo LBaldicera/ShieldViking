@@ -18,6 +18,7 @@ public class BaseUnit : MonoBehaviour
         isAlive = true;
         characterStats.currentHealth = characterStats.startingHealth;
         rb = GetComponent<Rigidbody2D>();
+        Debug.Log(characterStats.currentHealth);
     }
 
     // Update is called once per frame
@@ -29,14 +30,22 @@ public class BaseUnit : MonoBehaviour
     public void TakeDamage(float damage)
     {
         characterStats.currentHealth -= damage;
+        Debug.Log(characterStats.currentHealth);
         if (characterStats.currentHealth <= 0)
         {
             Die();
         }
     }
 
-    void Die()
+    public virtual void OnAttackActionEvent()
     {
+        //this will be called by our animation, and will calculate how we do damage
+    }
+
+    public virtual void Die()
+    {
+        animator.SetTrigger("Die");
+        isAlive = false;
         Debug.Log("Enemy Died");
     }
 }

@@ -17,16 +17,12 @@ public class Weapon : MonoBehaviour
     {
         if ((other.gameObject.layer == LayerMask.NameToLayer("Enemy")) || (other.gameObject.layer == LayerMask.NameToLayer("Player")))
         {
-            Debug.Log("Hit");
-
             other.GetComponent<BaseUnit>().TakeDamage(characterStats.attackDamage);
         }
 
         if ((other.gameObject.layer == LayerMask.NameToLayer("Shield")))
         {
-            Debug.Log("Hit Shield");
-
-            other.GetComponent<BaseUnit>().TakeDamage(characterStats.attackDamage / 2f);
+            other.GetComponentInParent<BaseUnit>().TakeDamage(characterStats.attackDamage / 4f);
         }
     }
 }
