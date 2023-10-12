@@ -18,27 +18,30 @@ public class Arrow : MonoBehaviour
         attackTarget = target;
         //find the location we are attacking
         Vector3 targetPos = target.GetComponent<Collider2D>().bounds.center;
-
         Quaternion rotation = Quaternion.LookRotation(targetPos - transform.position, transform.TransformDirection(Vector2.up));
         transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
 
         Tweener moveTween = transform.DOMove(targetPos, speed); //notice that we don't provide a duration and we only provide a speed; the reason for this is that we don't want a fixed duration in case objects are farther or closer
-        moveTween.SetSpeedBased(true);//make sure that we are setting the tween to be speed based
-        moveTween.OnComplete(OnProjectileArrived);
+        moveTween?.SetSpeedBased(true);//make sure that we are setting the tween to be speed based
+        moveTween?.OnComplete(OnProjectileArrived);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            other.GetComponent<BaseUnit>().TakeDamage(attackPower);
-        }
         if ((other.gameObject.layer == LayerMask.NameToLayer("Shield")))
         {
             other.GetComponentInParent<BaseUnit>().TakeDamage(attackPower / 4f);
+            OnProjectileArrived();
+
         }
 
-        Destroy(this.gameObject);
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            other.GetComponent<BaseUnit>().TakeDamage(attackPower);
+            OnProjectileArrived();
+
+        }
+
     }
 
     private void OnProjectileArrived() //we want this function to be called when we actually make it to our target

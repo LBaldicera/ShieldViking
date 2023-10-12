@@ -15,14 +15,15 @@ public class Weapon : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if ((other.gameObject.layer == LayerMask.NameToLayer("Shield")))
+        {
+            other.GetComponentInParent<BaseUnit>().TakeDamage(characterStats.attackDamage / 4f);
+        }
+
         if ((other.gameObject.layer == LayerMask.NameToLayer("Enemy")) || (other.gameObject.layer == LayerMask.NameToLayer("Player")))
         {
             other.GetComponent<BaseUnit>().TakeDamage(characterStats.attackDamage);
         }
 
-        if ((other.gameObject.layer == LayerMask.NameToLayer("Shield")))
-        {
-            other.GetComponentInParent<BaseUnit>().TakeDamage(characterStats.attackDamage / 4f);
-        }
     }
 }

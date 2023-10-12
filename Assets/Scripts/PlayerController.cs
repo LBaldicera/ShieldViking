@@ -10,6 +10,9 @@ public class PlayerController : BaseUnit
     [SerializeField] 
     private float jumpForce = 5.0f;
     private bool isGrounded;
+    private bool isBlocking;
+    private bool isAttacking;
+
 
     private float horizontal;
     private bool isFacingRight;
@@ -33,7 +36,6 @@ public class PlayerController : BaseUnit
     // Update is called once per frame
     void Update()
     {
-
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
         horizontal = Input.GetAxisRaw("Horizontal");
 
@@ -46,21 +48,32 @@ public class PlayerController : BaseUnit
         if (Input.GetKey(KeyCode.UpArrow) && IsGrounded())
         {
             animator.SetBool("IsBlocking", true);
+            isBlocking = true;
         }
         else
         {
             animator.SetBool("IsBlocking", false);
+            isBlocking = false;
+        }
+
+        if (isBlocking || isAttacking)
+        {
+            moveSpeed = 0f;
+        }
+        else
+        {
+            moveSpeed = defaultMoveSpeed;
         }
 
         Flip();
 
         if (Time.time >= characterStats.nextAttackTime)
         {
-            moveSpeed = defaultMoveSpeed;
+            isAttacking = false;
             if (Input.GetKeyDown(KeyCode.X) && IsGrounded())
             {
+                isAttacking = true;
                 animator.SetTrigger("Attack");
-                moveSpeed = 0;
                 characterStats.nextAttackTime = Time.time + 1f / characterStats.attackRate;
             }
         }

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 10
   currentHealth: 10
-  attackDamage: 20
+  attackDamage: 10
   attackRate: 2
-  nextAttackTime: 47.400894
+  nextAttackTime: 48.98093

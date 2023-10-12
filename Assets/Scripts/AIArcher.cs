@@ -24,7 +24,6 @@ public class AIArcher : BaseUnit
     public override void Start()
     {
         base.Start();
-        LookForEnemies();
     }
 
     private void FixedUpdate()
@@ -36,7 +35,7 @@ public class AIArcher : BaseUnit
             characterStats.nextAttackTime = 0f;
         }
 
-
+        LookForEnemies();
 
     }
 
