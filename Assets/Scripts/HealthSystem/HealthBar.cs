@@ -20,7 +20,6 @@ public class HealthBar : MonoBehaviour
     private void Update()
     {
         currentHealthbar.fillAmount = maxHealthBar * (characterStats.currentHealth / characterStats.startingHealth);
-        Debug.Log(characterStats.currentHealth);
 
     }
 }

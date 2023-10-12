@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2883254958726606916
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6155375764301487521}
+  m_Layer: 7
+  m_Name: Eyes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6155375764301487521
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2883254958726606916}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7992349634598707620}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7992349634598707640
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,7 +43,8 @@ GameObject:
   - component: {fileID: 7992349634598707623}
   - component: {fileID: 7992349634598707622}
   - component: {fileID: 7992349634598707641}
-  - component: {fileID: 7992349634598707621}
+  - component: {fileID: 756459588845375071}
+  - component: {fileID: 1237766947494553892}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -31,7 +63,8 @@ Transform:
   m_LocalPosition: {x: -0.512, y: -0.755, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6155375764301487521}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -134,7 +167,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.19851047, y: 0.27662224}
   m_EdgeRadius: 0
---- !u!114 &7992349634598707621
+--- !u!95 &756459588845375071
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7992349634598707640}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9331c747e3275854b8c477860cf9b3e0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1237766947494553892
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,7 +197,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 7992349634598707640}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c0fedd7faf3f0b4e90b24b0f9117d9a, type: 3}
+  m_Script: {fileID: 11500000, guid: db4899b218349f44faa922a0a9750bec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characterStats: {fileID: 11400000, guid: 10c200406b6c4664689dc6bc550eba9c, type: 2}
+  animator: {fileID: 756459588845375071}
+  isAlive: 1
+  lookDistance: 0.5
+  attackDis: 0.18
+  pointA: {fileID: 0}
+  pointB: {fileID: 0}
+  eyes: {fileID: 6155375764301487521}
+  moveSpeed: 0.5
+  viewAngle: 180
