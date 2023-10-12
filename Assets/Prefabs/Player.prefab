@@ -185,9 +185,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStats: {fileID: 11400000, guid: f552a7249be994b468481f3e74541788, type: 2}
+  animator: {fileID: 629647206303790635}
+  isAlive: 1
   moveSpeed: 1
   jumpForce: 4.5
-  attackPoint: {fileID: 7206333553346449496}
+  attackPoint: {fileID: 4573107411171038444}
   attackRange: 0.1
   enemyLayers:
     serializedVersion: 2
@@ -197,8 +199,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  animator: {fileID: 6037090787189207711}
---- !u!114 &6037090787189207708
+--- !u!114 &629647206303790632
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

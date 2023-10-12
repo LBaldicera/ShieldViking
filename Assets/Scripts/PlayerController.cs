@@ -4,28 +4,29 @@ using UnityEngine;
 
 public class PlayerController : BaseUnit
 {
-    [SerializeField] private float moveSpeed = 5.0f;
+    [SerializeField] 
+    private float moveSpeed = 5.0f;
     private float defaultMoveSpeed;
-    [SerializeField] private float jumpForce = 5.0f;
-    private float horizontal;
+    [SerializeField] 
+    private float jumpForce = 5.0f;
     private bool isGrounded;
+
+    private float horizontal;
     private bool isFacingRight;
 
     [SerializeField] private Transform attackPoint;
     [SerializeField] float attackRange = 0.5f;
     [SerializeField] LayerMask enemyLayers;
 
-    [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private Animator animator;
 
     // Start is called before the first frame update
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         characterStats.nextAttackTime = 0;
         defaultMoveSpeed = moveSpeed;
-        characterStats.currentHealth = characterStats.startingHealth;
 
     }
 
@@ -85,8 +86,6 @@ public class PlayerController : BaseUnit
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
-
-
     }
 
     void OnDrawGizmosSelected()
