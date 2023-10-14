@@ -49,14 +49,12 @@ public class AIController : BaseUnit
         base.Start();
         lastPoint = pointA;
 
-        isAlive = true;
-
         if (this.gameObject != null)
         {
             SetState(State.Idle);
         }
 
-        //Flip();
+        Flip();
 
     }
 

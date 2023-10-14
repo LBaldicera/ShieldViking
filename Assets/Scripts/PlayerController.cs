@@ -36,7 +36,6 @@ public class PlayerController : BaseUnit
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(isAlive);
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
         horizontal = Input.GetAxisRaw("Horizontal");
 

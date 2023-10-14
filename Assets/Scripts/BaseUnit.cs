@@ -52,6 +52,8 @@ public class BaseUnit : MonoBehaviour
         {
             animator.SetTrigger("Death");
             animator.SetBool("isAlive", false);
+            GetComponent<Collider2D>().enabled = false;
+            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
         }
         if (characterStats.currentHealth <= 0 && isAlive && isBlocking)
         {
