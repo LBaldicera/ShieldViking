@@ -54,7 +54,7 @@ public class AIController : BaseUnit
             SetState(State.Idle);
         }
 
-        Flip();
+        //Flip();
 
     }
 
@@ -146,7 +146,7 @@ public class AIController : BaseUnit
             LookForEnemies();
             Flip();
 
-            if (Vector3.Distance(transform.position, currentPoint.position) <= 0.01f)
+            if (Vector3.Distance(transform.position, currentPoint.position) <= 0.1f)
             {
                 lastPoint = currentPoint;
                 currentPoint = null;
