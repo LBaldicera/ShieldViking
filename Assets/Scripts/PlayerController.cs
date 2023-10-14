@@ -10,7 +10,6 @@ public class PlayerController : BaseUnit
     [SerializeField] 
     private float jumpForce = 5.0f;
     private bool isGrounded;
-    private bool isBlocking;
     private bool isAttacking;
 
 
@@ -30,12 +29,14 @@ public class PlayerController : BaseUnit
         base.Start();
         characterStats.nextAttackTime = 0;
         defaultMoveSpeed = moveSpeed;
+        isAlive = true;
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(isAlive);
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
         horizontal = Input.GetAxisRaw("Horizontal");
 
@@ -78,6 +79,7 @@ public class PlayerController : BaseUnit
             }
         }
     }
+
 
     private void FixedUpdate()
     {

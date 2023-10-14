@@ -49,6 +49,7 @@ public class AIController : BaseUnit
         base.Start();
         lastPoint = pointA;
 
+        isAlive = true;
 
         if (this.gameObject != null)
         {
