@@ -9,5 +9,9 @@ AnimatorOverrideController:
   m_Name: Archer
   m_Controller: {fileID: 9100000, guid: 9331c747e3275854b8c477860cf9b3e0, type: 2}
   m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 246aacb88edde1d44aadc0d281d218aa, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: cab6ffac17e4c0a49acfe0005149ada0, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: c35b739e92380d447973849dd18615d4, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 94f6ab8e573d6fa46aa5cb6c5b61f518, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 2b124931e533d714aa221196004b8cd4, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8ed7ac12ec7381c4aab6cd3fe295ff9c, type: 2}

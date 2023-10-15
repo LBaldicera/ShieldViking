@@ -10,7 +10,6 @@ public class PlayerController : BaseUnit
     [SerializeField] 
     private float jumpForce = 5.0f;
     private bool isGrounded;
-    private bool isBlocking;
     private bool isAttacking;
 
 
@@ -30,6 +29,7 @@ public class PlayerController : BaseUnit
         base.Start();
         characterStats.nextAttackTime = 0;
         defaultMoveSpeed = moveSpeed;
+        isAlive = true;
 
     }
 
@@ -39,13 +39,13 @@ public class PlayerController : BaseUnit
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded() && isAlive)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            animator.SetBool("IsJumping", true);
+            animator.SetTrigger("IsJumping");
         }
 
-        if (Input.GetKey(KeyCode.UpArrow) && IsGrounded())
+        if (Input.GetKey(KeyCode.UpArrow) && IsGrounded() && isAlive)
         {
             animator.SetBool("IsBlocking", true);
             isBlocking = true;
@@ -56,7 +56,7 @@ public class PlayerController : BaseUnit
             isBlocking = false;
         }
 
-        if (isBlocking || isAttacking)
+        if (isBlocking || isAttacking || !isAlive)
         {
             moveSpeed = 0f;
         }
@@ -66,6 +66,7 @@ public class PlayerController : BaseUnit
         }
 
         Flip();
+        animator.SetBool("IsGrounded", IsGrounded());
 
         if (Time.time >= characterStats.nextAttackTime)
         {
@@ -78,6 +79,7 @@ public class PlayerController : BaseUnit
             }
         }
     }
+
 
     private void FixedUpdate()
     {

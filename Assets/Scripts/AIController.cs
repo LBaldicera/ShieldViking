@@ -49,7 +49,6 @@ public class AIController : BaseUnit
         base.Start();
         lastPoint = pointA;
 
-
         if (this.gameObject != null)
         {
             SetState(State.Idle);
@@ -147,7 +146,7 @@ public class AIController : BaseUnit
             LookForEnemies();
             Flip();
 
-            if (Vector3.Distance(transform.position, currentPoint.position) <= 0.01f)
+            if (Vector3.Distance(transform.position, currentPoint.position) <= 0.2f)
             {
                 lastPoint = currentPoint;
                 currentPoint = null;
