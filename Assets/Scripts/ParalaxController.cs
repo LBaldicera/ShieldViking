@@ -50,10 +50,6 @@ public class ParalaxController : MonoBehaviour
         }
     }
 
-
-
-
-
     // Update is called once per frame
     private void LateUpdate()
     {

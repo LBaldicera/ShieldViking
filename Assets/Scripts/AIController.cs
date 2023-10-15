@@ -162,7 +162,7 @@ public class AIController : BaseUnit
 
     private IEnumerator OnChasing()
     {
-        ////we have to reset the path of our agent
+        
         float attackTimer = characterStats.attackRate;
 
         while (currentEnemy != null && currentEnemy.isAlive && isAlive)

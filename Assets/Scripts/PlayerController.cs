@@ -45,15 +45,18 @@ public class PlayerController : BaseUnit
             animator.SetTrigger("IsJumping");
         }
 
-        if (Input.GetKey(KeyCode.UpArrow) && IsGrounded() && isAlive)
+        if (Input.GetKey(KeyCode.UpArrow) && IsGrounded())
         {
             animator.SetBool("IsBlocking", true);
             isBlocking = true;
         }
         else
         {
-            animator.SetBool("IsBlocking", false);
-            isBlocking = false;
+            if(isAlive)
+            {
+                animator.SetBool("IsBlocking", false);
+                isBlocking = false;
+            }
         }
 
         if (isBlocking || isAttacking || !isAlive)
