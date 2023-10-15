@@ -640,10 +640,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Project Midgard
+  m_text: CANSU IS ANGRY
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 35519e0d84617fc4798f5b47990a99e3, type: 2}
-  m_sharedMaterial: {fileID: 3560066603407624031, guid: 35519e0d84617fc4798f5b47990a99e3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1894bbd4a97bfe3469465aa70743dfe3, type: 2}
+  m_sharedMaterial: {fileID: 3387450159990140854, guid: 1894bbd4a97bfe3469465aa70743dfe3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

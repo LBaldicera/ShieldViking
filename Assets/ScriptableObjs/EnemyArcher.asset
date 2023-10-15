@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemyArcher
   m_EditorClassIdentifier: 
   startingHealth: 20
-  currentHealth: 10
-  attackDamage: 5
+  currentHealth: 0
+  attackDamage: 10
   attackRate: 2
-  nextAttackTime: 69.50035
+  nextAttackTime: 0.50000006

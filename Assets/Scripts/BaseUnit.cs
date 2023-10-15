@@ -22,7 +22,6 @@ public class BaseUnit : MonoBehaviour
         isAlive = true;
         characterStats.currentHealth = characterStats.startingHealth;
         rb = GetComponent<Rigidbody2D>();
-        Debug.Log(characterStats.currentHealth);
     }
 
     // Update is called once per frame
@@ -51,15 +50,15 @@ public class BaseUnit : MonoBehaviour
         if (characterStats.currentHealth <= 0 && isAlive)
         {
             animator.SetTrigger("Death");
-            animator.SetBool("isAlive", false);
             GetComponent<Collider2D>().enabled = false;
+            isAlive = false;
             rb.constraints = RigidbodyConstraints2D.FreezePositionY;
         }
         if (characterStats.currentHealth <= 0 && isAlive && isBlocking)
         {
-            animator.SetTrigger("Shield_Die");
+            animator.SetTrigger("Death");
+            animator.SetBool("isAlive", false);
             isAlive = false;
-            Debug.Log("Enemy Died");
         }
     }
 

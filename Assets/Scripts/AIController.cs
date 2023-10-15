@@ -146,7 +146,7 @@ public class AIController : BaseUnit
             LookForEnemies();
             Flip();
 
-            if (Vector3.Distance(transform.position, currentPoint.position) <= 0.1f)
+            if (Vector3.Distance(transform.position, currentPoint.position) <= 0.2f)
             {
                 lastPoint = currentPoint;
                 currentPoint = null;
