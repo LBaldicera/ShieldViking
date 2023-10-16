@@ -15,5 +15,5 @@ MonoBehaviour:
   startingHealth: 20
   currentHealth: 0
   attackDamage: 10
-  attackRate: 2
+  attackRate: 4
   nextAttackTime: 0.50000006

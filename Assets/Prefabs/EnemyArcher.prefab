@@ -217,7 +217,7 @@ MonoBehaviour:
   isBlocking: 0
   arrowStartPos: {fileID: 4833814599523789797}
   arrowPrefab: {fileID: 6387622058259099021, guid: 5474561c4cbd6274486a4b8469884de6, type: 3}
-  attackDis: 4
+  attackDis: 1.5
   eyes: {fileID: 4833814600825712991}
   viewAngle: 180
 --- !u!95 &4833814601174840214

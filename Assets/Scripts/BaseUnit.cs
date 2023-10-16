@@ -47,21 +47,9 @@ public class BaseUnit : MonoBehaviour
 
     public virtual void Die()
     {
-        if (characterStats.currentHealth <= 0 && isAlive)
-        {
-            animator.SetTrigger("Death");
-            GetComponent<Collider2D>().enabled = false;
-            isAlive = false;
-            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
-        }
-        if (isBlocking)
-        {
-            animator.SetTrigger("Death");
-            GetComponent<Collider2D>().enabled = false;
-            isAlive = false;
-            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
 
-        }
+        animator.SetTrigger("Death");
+        isAlive = false;
 
 
     }

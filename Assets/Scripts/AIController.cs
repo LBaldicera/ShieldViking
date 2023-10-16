@@ -256,6 +256,9 @@ public class AIController : BaseUnit
     {
         base.Die();
         StopAllCoroutines();
+        rb.constraints = RigidbodyConstraints2D.FreezePosition;
+        GetComponent<Collider2D>().enabled = false;
+
     }
 
 
