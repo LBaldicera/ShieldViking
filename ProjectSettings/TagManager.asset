@@ -51,6 +51,9 @@ TagManager:
   - name: Ground
     uniqueID: 869975499
     locked: 0
+  - name: Mountain
+    uniqueID: 1282459205
+    locked: 0
   - name: Player
     uniqueID: 3088208657
     locked: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : BaseUnit
 {
@@ -69,7 +70,13 @@ public class PlayerController : BaseUnit
             moveSpeed = defaultMoveSpeed;
         }
 
-        Flip();
+        if (transform.position.y < -1.5f)
+        {
+            Die();
+            
+        }
+
+            Flip();
         animator.SetBool("IsGrounded", IsGrounded());
 
         if (Time.time >= characterStats.nextAttackTime)
@@ -88,6 +95,11 @@ public class PlayerController : BaseUnit
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
+
+        if (transform.position.y < -1.5f)
+        {
+            SceneManager.LoadSceneAsync(2);
+        }
     }
 
     private bool IsGrounded()

@@ -93,5 +93,13 @@ public class AIArcher : BaseUnit
         return true;
     }
 
+    public override void Die()
+    {
+        base.Die();
+        StopAllCoroutines();
+        rb.constraints = RigidbodyConstraints2D.FreezePosition;
+        GetComponent<Collider2D>().enabled = false;
+
+    }
 
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -31,6 +32,7 @@ public class BaseUnit : MonoBehaviour
         isAlive = true;
         currentHealth = characterStats.startingHealth;
         characterStats.currentHealth = characterStats.startingHealth;
+        animator.SetBool("IsAlive", true);
 
         rb = GetComponent<Rigidbody2D>();
     }
@@ -38,7 +40,7 @@ public class BaseUnit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void TakeDamage(float damage, bool shield)
@@ -69,11 +71,9 @@ public class BaseUnit : MonoBehaviour
 
     public virtual void Die()
     {
-
-        animator.SetTrigger("Death");
         isAlive = false;
-
-
+        animator.SetBool("IsAlive", false);
+        animator.SetTrigger("Death");
     }
 
     public void GameOver()
