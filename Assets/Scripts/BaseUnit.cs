@@ -32,6 +32,7 @@ public class BaseUnit : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        animator.SetTrigger("GetHit");
         characterStats.currentHealth -= damage;
         Debug.Log(characterStats.currentHealth);
         if (characterStats.currentHealth <= 0)

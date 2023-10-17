@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField]
     private CharacterStats characterStats;
+    [SerializeField] protected Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class Weapon : MonoBehaviour
     {
         if ((other.gameObject.layer == LayerMask.NameToLayer("Shield")))
         {
+            
             other.GetComponentInParent<BaseUnit>().TakeDamage(characterStats.attackDamage / 8f);
         }
 

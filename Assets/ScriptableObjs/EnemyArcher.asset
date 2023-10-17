@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06cc983bf9e63624a998d29e7ed564b9, type: 3}
   m_Name: EnemyArcher
   m_EditorClassIdentifier: 
-  startingHealth: 20
-  currentHealth: 0
-  attackDamage: 10
-  attackRate: 4
-  nextAttackTime: 0.50000006
+  startingHealth: 10
+  currentHealth: 10
+  attackDamage: 5
+  attackRate: 3
+  nextAttackTime: 0.7799998

@@ -110,7 +110,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1206758639
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 20f80ea235980ac4a8bb51183f7cf652, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -185,6 +185,7 @@ MonoBehaviour:
   characterStats: {fileID: 11400000, guid: f552a7249be994b468481f3e74541788, type: 2}
   animator: {fileID: 6037090787189207711}
   isAlive: 1
+  isBlocking: 0
   moveSpeed: 1
   jumpForce: 4.5
   attackPoint: {fileID: 0}
@@ -292,6 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStats: {fileID: 11400000, guid: f552a7249be994b468481f3e74541788, type: 2}
+  animator: {fileID: 6037090787189207711}
 --- !u!1 &8517109678167557969
 GameObject:
   m_ObjectHideFlags: 0
