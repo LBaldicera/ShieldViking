@@ -23,6 +23,7 @@ public class PlayerController : BaseUnit
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
+
     // Start is called before the first frame update
     public override void Start()
     {
@@ -110,5 +111,11 @@ public class PlayerController : BaseUnit
         if (attackPoint == null)
             return;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+    public void AddHealth(float health)
+    {
+        currentHealth += health;
+        characterStats.currentHealth = currentHealth;
     }
 }

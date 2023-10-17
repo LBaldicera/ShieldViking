@@ -19,12 +19,12 @@ public class Weapon : MonoBehaviour
         if ((other.gameObject.layer == LayerMask.NameToLayer("Shield")))
         {
             
-            other.GetComponentInParent<BaseUnit>().TakeDamage(characterStats.attackDamage / 8f);
+            other.GetComponentInParent<BaseUnit>().TakeDamage(characterStats.attackDamage / 8f, true);
         }
 
         if ((other.gameObject.layer == LayerMask.NameToLayer("Enemy")) || (other.gameObject.layer == LayerMask.NameToLayer("Player")))
         {
-            other.GetComponent<BaseUnit>().TakeDamage(characterStats.attackDamage);
+            other.GetComponent<BaseUnit>().TakeDamage(characterStats.attackDamage, false);
         }
 
     }

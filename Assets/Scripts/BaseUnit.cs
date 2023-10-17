@@ -11,6 +11,14 @@ public class BaseUnit : MonoBehaviour
     public bool isAlive;
     public bool isBlocking;
 
+    protected AudioSource audioSource;
+    [SerializeField]
+    protected AudioClip getHitClip;
+    [SerializeField]
+    protected AudioClip getHitShieldClip;
+
+    protected float currentHealth;
+
 
     protected Rigidbody2D rb;
 
@@ -18,9 +26,12 @@ public class BaseUnit : MonoBehaviour
     // Start is called before the first frame update
     public virtual void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         isAlive = true;
+        currentHealth = characterStats.startingHealth;
         characterStats.currentHealth = characterStats.startingHealth;
+
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -30,12 +41,22 @@ public class BaseUnit : MonoBehaviour
         
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, bool shield)
     {
         animator.SetTrigger("GetHit");
-        characterStats.currentHealth -= damage;
-        Debug.Log(characterStats.currentHealth);
-        if (characterStats.currentHealth <= 0)
+        currentHealth -= damage;
+        if (shield)
+        {
+            audioSource.clip = getHitShieldClip;
+        }
+        else
+        {
+            audioSource.clip = getHitClip;
+        }
+        audioSource.Play();
+        Debug.Log(currentHealth);
+        characterStats.currentHealth = currentHealth;
+        if (currentHealth <= 0)
         {
             Die();
         }

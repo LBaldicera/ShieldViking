@@ -112,9 +112,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 293902258449505366}
     - target: {fileID: 1237766947494553892, guid: dfb82ef96639a6c48beabb684c22678e, type: 3}
-      propertyPath: attackDis
-      value: 0.19
-      objectReference: {fileID: 0}
+      propertyPath: getHitClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e9f687af1fff8e04b9173d9c5e992fbd, type: 3}
     - target: {fileID: 6946917562502245593, guid: dfb82ef96639a6c48beabb684c22678e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.127

@@ -5,7 +5,6 @@ using TMPro;
 using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
-    [SerializeField] private HealthSystem playerHealth;
     [SerializeField] private Image totalHealthbar;
     [SerializeField] private Image currentHealthbar;
     [SerializeField] private float maxHealthBar;

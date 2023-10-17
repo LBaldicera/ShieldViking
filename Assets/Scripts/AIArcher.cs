@@ -20,6 +20,10 @@ public class AIArcher : BaseUnit
     [SerializeField]
     private float viewAngle;
 
+    [SerializeField]
+    protected AudioClip attackClip;
+
+
 
     public override void Start()
     {
@@ -47,6 +51,8 @@ public class AIArcher : BaseUnit
         {
             GameObject Arrow = Instantiate(arrowPrefab, arrowStartPos.position, arrowStartPos.rotation);
             Arrow.GetComponent<Arrow>().Init(currentEnemy, characterStats.attackDamage);
+            audioSource.clip = attackClip;
+            audioSource.Play();
         }
     }
 

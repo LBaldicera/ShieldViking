@@ -27,7 +27,7 @@ public class HealthCollectible : MonoBehaviour
         if (collision.gameObject.layer == playerLayer)
         {
             // Assuming that the HealthSystem script is attached to the player object
-            collision.GetComponent<HealthSystem>().AddHealth(healthValue);
+            collision.GetComponent<PlayerController>().AddHealth(healthValue);
             gameObject.SetActive(false);
         }
     }

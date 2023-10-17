@@ -30,14 +30,14 @@ public class Arrow : MonoBehaviour
     {
         if ((other.gameObject.layer == LayerMask.NameToLayer("Shield")))
         {
-            other.GetComponentInParent<BaseUnit>().TakeDamage(attackPower / 4f);
+            other.GetComponentInParent<BaseUnit>().TakeDamage(attackPower / 8f, true);
             OnProjectileArrived();
 
         }
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            other.GetComponent<BaseUnit>().TakeDamage(attackPower);
+            other.GetComponent<BaseUnit>().TakeDamage(attackPower, false);
             OnProjectileArrived();
 
         }
