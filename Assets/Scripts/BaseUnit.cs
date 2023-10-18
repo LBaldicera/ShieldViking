@@ -41,7 +41,6 @@ public class BaseUnit : MonoBehaviour
         isAlive = true;
         currentHealth = characterStats.startingHealth;
         characterStats.currentHealth = characterStats.startingHealth;
-        animator.SetBool("IsAlive", true);
 
         rb = GetComponent<Rigidbody2D>();
     }

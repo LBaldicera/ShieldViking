@@ -24,13 +24,16 @@ public class PlayerController : BaseUnit
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
+    private float attackTimer;
+
 
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
-        characterStats.nextAttackTime = 0;
+        attackTimer = characterStats.attackRate;
         defaultMoveSpeed = moveSpeed;
+        animator.SetBool("IsAlive", true);
         isAlive = true;
 
     }
@@ -81,16 +84,19 @@ public class PlayerController : BaseUnit
         Flip();
         animator.SetBool("IsGrounded", IsGrounded());
 
-        if (Time.time >= characterStats.nextAttackTime)
+        attackTimer += Time.deltaTime;
+
+        if (attackTimer >= characterStats.attackRate)
         {
+            
             isAttacking = false;
-            if (Input.GetKeyDown(KeyCode.X) && IsGrounded())
+            if (Input.GetKeyDown(KeyCode.X) && IsGrounded() && !isBlocking)
             {
                 audioSource.clip = slashClip;
                 audioSource.Play();
                 isAttacking = true;
                 animator.SetTrigger("Attack");
-                characterStats.nextAttackTime = Time.time + 1f / characterStats.attackRate;
+                attackTimer = 0f;
             }
         }
     }

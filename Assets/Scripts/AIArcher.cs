@@ -23,22 +23,25 @@ public class AIArcher : BaseUnit
     [SerializeField]
     protected AudioClip attackClip;
 
+    private float attackTimer;
 
 
     public override void Start()
     {
         base.Start();
+        attackTimer = characterStats.attackRate;
+
     }
 
     private void FixedUpdate()
     {
-        characterStats.nextAttackTime += Time.fixedDeltaTime;
-        if(characterStats.attackRate < characterStats.nextAttackTime && currentEnemy != null)
+        attackTimer += Time.fixedDeltaTime;
+        if(characterStats.attackRate < attackTimer && currentEnemy != null && isAlive)
         {
             animator.SetTrigger("Attack");
-            characterStats.nextAttackTime = 0f;
+            attackTimer = 0f;
+            Debug.Log(currentEnemy);
         }
-
         LookForEnemies();
 
     }
@@ -72,6 +75,11 @@ public class AIArcher : BaseUnit
                     currentEnemy = unit;
                     return; //remember: you can return anywhere in a void function and it immediately exits
                 }
+                //else
+                //{
+                    //currentEnemy = null;
+                    //return;
+                //}
             }
         }
     }
