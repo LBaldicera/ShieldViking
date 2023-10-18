@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Boss
   m_EditorClassIdentifier: 
   startingHealth: 60
-  currentHealth: 60
+  currentHealth: 50
   attackDamage: 15
-  attackRate: 0.25
+  attackRate: 0.75
   nextAttackTime: 0

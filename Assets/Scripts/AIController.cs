@@ -17,7 +17,6 @@ public class AIController : BaseUnit
 
     [SerializeField]
     private float attackDis; //Distance to attack
-    [SerializeField] CharacterStats characterStats;
 
     [SerializeField]
     private Transform pointA;
