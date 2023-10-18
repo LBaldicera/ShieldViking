@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: 
   startingHealth: 30
-  currentHealth: 0
+  currentHealth: 20
   attackDamage: 10
-  attackRate: 1
-  nextAttackTime: 0
+  attackRate: 0.8
+  nextAttackTime: 32.36934

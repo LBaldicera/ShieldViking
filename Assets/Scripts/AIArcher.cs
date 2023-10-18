@@ -75,11 +75,11 @@ public class AIArcher : BaseUnit
                     currentEnemy = unit;
                     return; //remember: you can return anywhere in a void function and it immediately exits
                 }
-                //else
-                //{
-                    //currentEnemy = null;
-                    //return;
-                //}
+                else
+                {
+                    currentEnemy = null;
+                    return;
+                }
             }
         }
     }
