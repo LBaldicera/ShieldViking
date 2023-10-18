@@ -973,8 +973,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: ALL RIGHTS RESERVED
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 35519e0d84617fc4798f5b47990a99e3, type: 2}
-  m_sharedMaterial: {fileID: 3560066603407624031, guid: 35519e0d84617fc4798f5b47990a99e3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9e8fd87cac2a6204383041a464e02682, type: 2}
+  m_sharedMaterial: {fileID: 5659994023788405080, guid: 9e8fd87cac2a6204383041a464e02682, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1108,8 +1108,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'KRAKEN HATERS '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 35519e0d84617fc4798f5b47990a99e3, type: 2}
-  m_sharedMaterial: {fileID: 3560066603407624031, guid: 35519e0d84617fc4798f5b47990a99e3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9e8fd87cac2a6204383041a464e02682, type: 2}
+  m_sharedMaterial: {fileID: 5659994023788405080, guid: 9e8fd87cac2a6204383041a464e02682, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1257,8 +1257,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: PUSH START
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 35519e0d84617fc4798f5b47990a99e3, type: 2}
-  m_sharedMaterial: {fileID: 3560066603407624031, guid: 35519e0d84617fc4798f5b47990a99e3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9e8fd87cac2a6204383041a464e02682, type: 2}
+  m_sharedMaterial: {fileID: 5659994023788405080, guid: 9e8fd87cac2a6204383041a464e02682, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -78,7 +78,6 @@ public class AIArcher : BaseUnit
                 else
                 {
                     currentEnemy = null;
-                    return;
                 }
             }
         }
