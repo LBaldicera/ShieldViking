@@ -13,12 +13,14 @@ public class GameOverMenu : MonoBehaviour
 
     private EventSystem eventSystem;
     private Button selectedButton;
+    private Button lastSelectedButton;
     private bool isVisible = true;
     private float lastBlinkTime;
 
     private void Start()
     {
         eventSystem = EventSystem.current;
+        lastSelectedButton = continueButton; // Initialize the last selected button
 
         // Set the default button to be selected when the scene starts.
         eventSystem.SetSelectedGameObject(continueButton.gameObject);
@@ -33,13 +35,11 @@ public class GameOverMenu : MonoBehaviour
 
         if (verticalInput > 0)
         {
-            eventSystem.SetSelectedGameObject(continueButton.gameObject);
-            selectedButton = continueButton;
+            SetSelectedButton(continueButton);
         }
         else if (verticalInput < 0)
         {
-            eventSystem.SetSelectedGameObject(endButton.gameObject);
-            selectedButton = endButton;
+            SetSelectedButton(endButton);
         }
 
         // Blink the selected button
@@ -49,6 +49,22 @@ public class GameOverMenu : MonoBehaviour
             selectedButton.gameObject.SetActive(isVisible);
             lastBlinkTime = Time.time;
         }
+    }
+
+    private void SetSelectedButton(Button newSelectedButton)
+    {
+        // Disable the visibility of the previously selected button
+        lastSelectedButton.gameObject.SetActive(true);
+
+        // Set the new selected button
+        eventSystem.SetSelectedGameObject(newSelectedButton.gameObject);
+        selectedButton = newSelectedButton;
+
+        // Update the last selected button
+        lastSelectedButton = newSelectedButton;
+
+        // Hide the new selected button if it's currently invisible
+        newSelectedButton.gameObject.SetActive(isVisible);
     }
 
     public void Continue()

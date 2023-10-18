@@ -187,7 +187,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1206758639
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 2
   m_Sprite: {fileID: 172020901, guid: f463a27e1f741a5448fb7e4f94af84eb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -218,6 +218,8 @@ MonoBehaviour:
   isBlocking: 0
   getHitClip: {fileID: 8300000, guid: e9f687af1fff8e04b9173d9c5e992fbd, type: 3}
   getHitShieldClip: {fileID: 0}
+  jumpClip: {fileID: 0}
+  deathClip: {fileID: 8300000, guid: 5269f934f510a6f4ca2c01ef4a5420f1, type: 3}
   arrowStartPos: {fileID: 4833814599523789797}
   arrowPrefab: {fileID: 6387622058259099021, guid: 5474561c4cbd6274486a4b8469884de6, type: 3}
   attackDis: 1.5

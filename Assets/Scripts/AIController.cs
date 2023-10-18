@@ -190,6 +190,8 @@ public class AIController : BaseUnit
                 //if this is true, we attack the player
                 animator.SetBool("Walking", false);
                 animator.SetTrigger("Attack");
+                audioSource.clip = slashClip;
+                audioSource.Play();
 
                 yield return new WaitForSecondsRealtime(characterStats.attackRate); //Wait for the animation to complete before actaully reducing life
 

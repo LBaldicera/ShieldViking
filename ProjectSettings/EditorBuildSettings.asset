@@ -9,9 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 56243444ec0ac714b940043cfb808092
   - enabled: 1
+    path: Assets/Scenes/Controls.unity
+    guid: 2bf166c7c6668034484d0d563c8912ec
+  - enabled: 1
     path: Assets/Scenes/Level.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/GameOver.unity
+    path: Assets/Scenes/GameOverScreen.unity
     guid: 764519c79140b914192e7894258da510
+  - enabled: 1
+    path: Assets/Scenes/WinScreen.unity
+    guid: 1d095c3dfe2634c4193c46e8230af1e8
   m_configObjects: {}

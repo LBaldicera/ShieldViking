@@ -17,6 +17,15 @@ public class BaseUnit : MonoBehaviour
     protected AudioClip getHitClip;
     [SerializeField]
     protected AudioClip getHitShieldClip;
+    [SerializeField]
+    protected AudioClip jumpClip;
+    [SerializeField]
+    protected AudioClip deathClip;
+    [SerializeField]
+    protected AudioClip slashClip;
+    [SerializeField]
+    protected AudioClip collectibleClip;
+
 
     protected float currentHealth;
 
@@ -60,6 +69,8 @@ public class BaseUnit : MonoBehaviour
         characterStats.currentHealth = currentHealth;
         if (currentHealth <= 0)
         {
+            audioSource.clip = deathClip;
+            audioSource.Play();
             Die();
         }
     }
@@ -78,6 +89,6 @@ public class BaseUnit : MonoBehaviour
 
     public void GameOver()
     {
-        SceneManager.LoadScene(2); // Load the next scene (change the index as needed)
+        SceneManager.LoadScene(3); 
     }
 }

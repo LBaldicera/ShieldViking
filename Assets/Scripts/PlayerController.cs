@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : BaseUnit
 {
-    [SerializeField] 
+    [SerializeField]
     private float moveSpeed = 5.0f;
     private float defaultMoveSpeed;
-    [SerializeField] 
+    [SerializeField]
     private float jumpForce = 5.0f;
     private bool isGrounded;
     private bool isAttacking;
@@ -45,6 +45,8 @@ public class PlayerController : BaseUnit
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             animator.SetTrigger("IsJumping");
+            audioSource.clip = jumpClip;
+            audioSource.Play();
         }
 
         if (Input.GetKey(KeyCode.UpArrow) && IsGrounded())
@@ -54,7 +56,7 @@ public class PlayerController : BaseUnit
         }
         else
         {
-            if(isAlive)
+            if (isAlive)
             {
                 animator.SetBool("IsBlocking", false);
                 isBlocking = false;
@@ -73,10 +75,10 @@ public class PlayerController : BaseUnit
         if (transform.position.y < -1.5f)
         {
             Die();
-            
+
         }
 
-            Flip();
+        Flip();
         animator.SetBool("IsGrounded", IsGrounded());
 
         if (Time.time >= characterStats.nextAttackTime)
@@ -84,6 +86,8 @@ public class PlayerController : BaseUnit
             isAttacking = false;
             if (Input.GetKeyDown(KeyCode.X) && IsGrounded())
             {
+                audioSource.clip = slashClip;
+                audioSource.Play();
                 isAttacking = true;
                 animator.SetTrigger("Attack");
                 characterStats.nextAttackTime = Time.time + 1f / characterStats.attackRate;
@@ -130,4 +134,15 @@ public class PlayerController : BaseUnit
         currentHealth += health;
         characterStats.currentHealth = currentHealth;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Check if the colliding object is on the "Collectibles" layer
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Collectibles"))
+        {
+            audioSource.clip = collectibleClip;
+            audioSource.Play();
+        }
+    }
+
 }

@@ -3,7 +3,12 @@ guid: 1c0fedd7faf3f0b4e90b24b0f9117d9a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - characterStats: {instanceID: 0}
+  - animator: {instanceID: 0}
+  - getHitClip: {instanceID: 0}
+  - getHitShieldClip: {instanceID: 0}
+  - jumpClip: {fileID: 8300000, guid: 6a30f92736579da4c8b011f002cdccc9, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -6,12 +6,6 @@ public class HealthCollectible : MonoBehaviour
 {
     [SerializeField] private float healthValue;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -26,7 +20,6 @@ public class HealthCollectible : MonoBehaviour
         // Check if the collided object is on the "Player" layer
         if (collision.gameObject.layer == playerLayer)
         {
-            // Assuming that the HealthSystem script is attached to the player object
             collision.GetComponent<PlayerController>().AddHealth(healthValue);
             gameObject.SetActive(false);
         }
