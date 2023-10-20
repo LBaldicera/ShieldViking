@@ -46,8 +46,11 @@ public class AIArcher : BaseUnit
             attackTimer = 0f;
             Debug.Log(currentEnemy);
         }
-        LookForEnemies();
-        FlipCondition();
+        if (isAlive)
+        {
+            LookForEnemies();
+            FlipCondition();
+        }
 
     }
 
