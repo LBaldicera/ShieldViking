@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AIArcher : BaseUnit
@@ -24,13 +25,16 @@ public class AIArcher : BaseUnit
     protected AudioClip attackClip;
 
     private float attackTimer;
+    private bool hasFlipped = false;
+
+    public GameObject player;
 
 
     public override void Start()
     {
         base.Start();
         attackTimer = characterStats.attackRate;
-
+        player = GameObject.Find("Player");
     }
 
     private void FixedUpdate()
@@ -43,6 +47,7 @@ public class AIArcher : BaseUnit
             Debug.Log(currentEnemy);
         }
         LookForEnemies();
+        FlipCondition();
 
     }
 
@@ -109,4 +114,27 @@ public class AIArcher : BaseUnit
 
     }
 
+    private void FlipCondition()
+    {
+        if (player.transform.position.x > transform.position.x && !hasFlipped)
+        {
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
+            Debug.Log("I'm flipping");
+
+            // Set the hasFlipped flag to true to prevent further flips.
+            hasFlipped = true;
+        }
+        if (player.transform.position.x < transform.position.x && hasFlipped)
+        {
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
+            Debug.Log("I'm flipping");
+
+            // Set the hasFlipped flag to true to prevent further flips.
+            hasFlipped = false;
+        }
+    }
 }

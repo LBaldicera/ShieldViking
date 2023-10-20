@@ -220,12 +220,15 @@ MonoBehaviour:
   getHitShieldClip: {fileID: 0}
   jumpClip: {fileID: 0}
   deathClip: {fileID: 8300000, guid: 5269f934f510a6f4ca2c01ef4a5420f1, type: 3}
+  slashClip: {fileID: 0}
+  collectibleClip: {fileID: 0}
   arrowStartPos: {fileID: 4833814599523789797}
   arrowPrefab: {fileID: 6387622058259099021, guid: 5474561c4cbd6274486a4b8469884de6, type: 3}
   attackDis: 1.5
   eyes: {fileID: 4833814600825712991}
   viewAngle: 180
   attackClip: {fileID: 8300000, guid: dace265ca0fed33449f12bd1480ed09f, type: 3}
+  player: {fileID: 6037090787189207686, guid: 4d0667041a0a01c4daba0d935d3fb60b, type: 3}
 --- !u!95 &4833814601174840214
 Animator:
   serializedVersion: 5

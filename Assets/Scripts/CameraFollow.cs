@@ -8,12 +8,10 @@ public class CameraFollow : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
 
     [SerializeField] private Transform target;
-    private Vector3 offset;
+    [SerializeField] private Vector3 offset = new Vector3 (-2, 0, 0);
 
     private void Start()
     {
-        // Store the initial offset
-        offset = transform.position - target.position;
     }
 
     private void FixedUpdate()
